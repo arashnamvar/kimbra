@@ -11,7 +11,7 @@ import AVFoundation
 
 class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     var count: Int = 1
-    
+    var session = AVAudioSession.sharedInstance()
     
     var startstop1 = true
     var startstop2 = true
@@ -142,10 +142,10 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
                 
                 var error: NSError?
                 
+                
                 audioPlayer = AVAudioPlayer(contentsOfURL: url1,
                     error: &error)
-                audioPlayer?.volume = 1.0
-                audioPlayer?.pan = 0.0
+                session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker, error: nil)
                 audioPlayer?.numberOfLoops = -1
                 audioPlayer?.delegate = self
                 
