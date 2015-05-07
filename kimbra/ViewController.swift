@@ -144,7 +144,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
                 
                 audioPlayer = AVAudioPlayer(contentsOfURL: url1,
                     error: &error)
-                
+                audioPlayer?.volume = 1.0
+                audioPlayer?.pan = 0.0
                 audioPlayer?.numberOfLoops = -1
                 audioPlayer?.delegate = self
                 
