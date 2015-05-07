@@ -117,17 +117,17 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         run()
         if audioRecorder?.recording == false {
             count++
-            stopButton.enabled = true
-            recordAudio.enabled = false
+            stopButton.hidden = false
+            recordAudio.hidden = true
             audioRecorder?.record()
         }
     }
     
     @IBAction func stopAudio(sender: UIButton) {
-        stopButton.enabled = false
-        recordAudio.enabled = true
+        recordAudio.hidden = false
         
         if audioRecorder?.recording == true {
+            stopButton.hidden = true
             audioRecorder?.stop()
         } else {
             
@@ -384,7 +384,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
         recordAudio.enabled = true
-        stopButton.enabled = false
+        stopButton.enabled = true
     }
     
     func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer!, error: NSError!) {
@@ -399,7 +399,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        stopButton.enabled = false
+        stopButton.enabled = true
         
     }
     
